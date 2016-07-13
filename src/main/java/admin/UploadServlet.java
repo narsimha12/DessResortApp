@@ -20,7 +20,6 @@ import javazoom.upload.UploadBean;
 import javazoom.upload.UploadException;
 import javazoom.upload.UploadFile;
 
-import com.oreilly.servlet.MultipartFilter;
 
 /**
  * Servlet implementation class regForm
