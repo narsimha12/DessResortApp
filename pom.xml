@@ -12,8 +12,29 @@
     <sonar.sources>pom.xml,src/main/java</sonar.sources>
     <sonar.tests></sonar.tests>
   </properties>
-  <dependencies>
-    <dependency>
+   <dependency>
+     <groupId>commons-fileupload</groupId>
+     <artifactId>commons-fileupload</artifactId>
+     <version>1.2</version>
+   </dependency>
+   <dependency>
+     <groupId>cos</groupId>
+     <artifactId>cos</artifactId>
+     <version>05Nov2002</version>
+   </dependency>
+   <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-all</artifactId>
+    <version>1.10.19</version>
+   </dependency>
+   <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.8</version>
+   </dependency>
+   
+   <dependencies>
+     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
