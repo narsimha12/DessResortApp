@@ -27,21 +27,11 @@
     </dependency>
   </dependencies>
   <build>
-   <resources>
-      <resource>
-        <directory>src</directory>
-        <includes>
-          <include>Webcontent</include>
-        </includes>
-      </resource>
-    </resources> 
    <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <configuration>
-               <source>1.7</source>
-               <target>1.7</target>
                <failOnMissingWebXml>false</failOnMissingWebXml>
                <archive>
                    <manifestEntries>
@@ -51,6 +41,14 @@
                    </manifestEntries>
                </archive>
             </configuration>
+        </plugin>
+        <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
+              <configuration>
+              <source>1.7</source>
+              <target>1.7</target>
+              </configuration>
         </plugin>
     </plugins>
     <finalName>DessResort</finalName>
