@@ -50,7 +50,7 @@
 <div id="content">
 <h2 class="style5"><u><b>Register</b></u></h2>
 
-<form action="regForm" method="post" id="for" name="myform" onsubmit="return validate()">
+<form action="RegistrationServlet" method="post" id="for" name="myform" onsubmit="return validate()">
 <table class="tab" cellspacing="1px" cellpadding="10px">
 
 <tr><td class="x">Name:</td>

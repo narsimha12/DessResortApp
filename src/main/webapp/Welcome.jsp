@@ -56,14 +56,6 @@
 	<div id="leftcol">
 		<div id="navcontainer">
 			<ul>
-			 	<li id="cities"><a href="#" >Gallery</a>
-			 		<ul id="citysub" hidden >
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Hyderabad">Hyderabad</a></li>
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Goa">GOA</a></li>
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Varanasi">Varanasi</a></li>
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Coorg">COORG</a></li>
-			 		</ul>
-			 	</li>
 			 	<li id="review"><a href="#">Review</a>
 				 	<ul id="reviewsub" hidden >
 				 			<li class="sublistmargin"><a href="reviewintermediate.jsp?city=Hyderabad">Hyderabad</a></li>
@@ -72,7 +64,7 @@
 			 			<li class="sublistmargin"><a href="reviewintermediate.jsp?city=Coorg">COORG</a></li>
 				 	</ul>
 			 	</li>
-			 	<li id="post"><a href="Welcome.jsp">Post</a>
+			 	<li id="post"><a href="Welcome.jsp">Home</a>
 					<ul id="postsub" hidden>
 			 			
 			 		</ul>
@@ -89,32 +81,7 @@
 	<%
 		}
 	%>
-	<h2 class="style5"><u>Upload Photos Here</u></h2>
-	<form action="./UploadServlet" method="post"enctype="multipart/form-data">
-		<table cellspacing="1px" cellpadding="10px">
-			<tr>
-				<td class="x">Select Video's or Pics to upload: </td>
-				<td><input type="file" name="file" size="50" /></td>
-			</tr>
-			<tr>
-				<td>Select Location: </td>
-				<td>
-					<select name="city">
-						<option>Hyderabad</option>
-						<option>Goa</option>
-						<option>Coorg</option>
-						<option>Varanasi</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="hidden" name=user_name value='<%=session.getAttribute("uname") %>'></input>
-					<input type="submit" value="Upload File" />
-				</td>
-			</tr>
-		</table>
-	</form>
+	<h2 class="style5"><u>Welcome to DessResort</u></h2>
 	
 	<h2 class="style5"></h2>
 	

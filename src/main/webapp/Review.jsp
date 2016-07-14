@@ -55,14 +55,6 @@
 	<div id="leftcol">
 		<div id="navcontainer">
 			<ul>
-			 	<li id="cities"><a href="#" >Gallery</a>
-			 		<ul id="citysub" hidden >
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Hyderabad">Hyderabad</a></li>
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Goa">GOA</a></li>
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Varanasi">Varanasi</a></li>
-			 			<li class="sublistmargin"><a href="intermediate.jsp?city=Coorg">COORG</a></li>
-			 		</ul>
-			 	</li>
 			 	<li id="review"><a href="#">Review</a>
 				 	<ul id="reviewsub" hidden >
 				 			<li class="sublistmargin"><a href="reviewintermediate.jsp?city=Hyderabad">Hyderabad</a></li>
@@ -71,7 +63,7 @@
 			 			<li class="sublistmargin"><a href="reviewintermediate.jsp?city=Coorg">COORG</a></li>
 				 	</ul>
 			 	</li>
-			 	<li id="post"><a href="Welcome.jsp">Post</a>
+			 	<li id="post"><a href="Welcome.jsp">Home</a>
 					<ul id="postsub" hidden>
 			 			
 			 		</ul>

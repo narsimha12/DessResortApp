@@ -3,9 +3,6 @@ package admin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Hashtable;
-import java.beans.*;
 public class regFormbean {
 	
 	String fname,pwd,gender,phno,loc;
@@ -27,7 +24,6 @@ public class regFormbean {
 		        stmt.setString(8, loc2);
 		        stmt.setString(9, "null");
 		        status=stmt.executeUpdate();
-		        String msg="Welcome to OGRS\nUserId: "+fn+"\nPassword: "+pw;
 		        if(status>0){
 		        	//new SendMailClass().sendmail(ce, msg);
 		        	stmt.close();
