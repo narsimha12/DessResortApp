@@ -8,6 +8,7 @@ import java.sql.Statement;
 public class Dbconnection {
 	Connection con=null;
 	Statement stmt=null;
+	Logger logger = Logger.getLogger(Dbconnection.class.getName());
 	public Connection getConnection(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -15,10 +16,10 @@ public class Dbconnection {
 			stmt=con.createStatement();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			throw new RuntimeException(e);
+			logger.info(e);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			throw new RuntimeException(e);
+			logger.info(e);
 		}
 		return con;
 	}

@@ -30,7 +30,12 @@
         <version>3.0.1</version>
         <scope>provided</scope>
     </dependency>
-  </dependencies>
+   <dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+   </dependency> 
+ </dependencies>
   <build>
    <plugins>
         <plugin>
@@ -56,6 +61,15 @@
               </configuration>
         </plugin>
     </plugins>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <targetPath>${basedir}/target</targetPath>
+            <includes>
+                <include>log4j.properties</include>
+            </includes>
+        </resource>
+    </resources>
     <finalName>DessResort</finalName>
   </build>
 </project>
