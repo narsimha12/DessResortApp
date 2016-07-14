@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.apache.log4j.Logger;
 
 public class Dbconnection {
 	Connection con=null;
 	Statement stmt=null;
-	Logger logger = Logger.getLogger(Dbconnection.class.getName());
+	private static final Logger logger = Logger.getLogger(Dbconnection.class.getName());
 	public Connection getConnection(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
