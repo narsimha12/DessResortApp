@@ -1,4 +1,4 @@
-package test;
+package admin;
 
 
 import java.io.IOException;
@@ -15,10 +15,11 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import admin.RegistrationServlet;
 import admin.LoginServlet;
 
 
-public class TestLoginServelt extends Mockito {
+public class TestRegServlet extends Mockito {
 
 
 @Test
@@ -28,25 +29,22 @@ HttpServletRequest stubHttpServletRequest = mock(HttpServletRequest.class);
 HttpServletResponse stubHttpServletResponse = mock(HttpServletResponse.class);
 HttpSession stubHttpSession = mock(HttpSession.class);
 
-when(stubHttpServletRequest.getParameter("uname")).thenReturn("narsimha");
-when(stubHttpServletRequest.getParameter("pwd")).thenReturn("GTV9X");
-
-when(stubHttpServletRequest.getSession()).thenReturn(stubHttpSession);
-when(stubHttpSession.getAttribute("uname")).thenReturn("narsimha");
+when(stubHttpServletRequest.getParameter("name")).thenReturn("TestUser");
+when(stubHttpServletRequest.getParameter("gender")).thenReturn("male");
+when(stubHttpServletRequest.getParameter("mobile")).thenReturn("9546464646");
+when(stubHttpServletRequest.getParameter("location")).thenReturn("hyderabad");
 when(stubHttpServletRequest.getAttribute("request")).thenReturn("test");
 StringWriter sw = new StringWriter();
 PrintWriter pw =new PrintWriter(sw);
 
 when(stubHttpServletResponse.getWriter()).thenReturn(pw);
 
-LoginServlet sampleServlet = new LoginServlet();
+RegistrationServlet sampleServlet = new RegistrationServlet();
 sampleServlet.doPost(stubHttpServletRequest, stubHttpServletResponse);
-String result = sw.getBuffer().toString().trim();
-//System.out.println("from response: "+result);
-//System.out.println("in test: "+stubHttpSession.getAttribute("uname"));
+int result = Integer.parseInt(sw.getBuffer().toString().trim());
 
 //System.out.println(result);
-TestCase.assertEquals(result,"narsimha");
+TestCase.assertEquals(result,1);
 
 }
 }
