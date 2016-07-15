@@ -40,7 +40,7 @@
 <div id="content">
 <h2 class="style5"><u><b>LOG IN</b></u></h2>
 
-<form action="./login" method="post">
+<form action="./LoginServlet" method="post">
 <table class="tab" cellspacing="1px" cellpadding="10px">
 <% if(request.getParameter("status")!=null){ %>
 <tr><td class="x" colspan="2"><font color="red"><%=request.getParameter("status")%></font></td></tr>

@@ -15,7 +15,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import admin.login;
+import admin.LoginServlet;
 
 
 public class TestLoginServelt extends Mockito {
@@ -28,24 +28,24 @@ HttpServletRequest stubHttpServletRequest = mock(HttpServletRequest.class);
 HttpServletResponse stubHttpServletResponse = mock(HttpServletResponse.class);
 HttpSession stubHttpSession = mock(HttpSession.class);
 
-when(stubHttpServletRequest.getParameter("uname")).thenReturn("Narsimha");
-when(stubHttpServletRequest.getParameter("pwd")).thenReturn("TTD");
+when(stubHttpServletRequest.getParameter("uname")).thenReturn("narsimha");
+when(stubHttpServletRequest.getParameter("pwd")).thenReturn("GTV9X");
 
 when(stubHttpServletRequest.getSession()).thenReturn(stubHttpSession);
-when(stubHttpSession.getAttribute("uname")).thenReturn("Narsimha");
+when(stubHttpSession.getAttribute("uname")).thenReturn("narsimha");
 
 StringWriter sw = new StringWriter();
 PrintWriter pw =new PrintWriter(sw);
 
 when(stubHttpServletResponse.getWriter()).thenReturn(pw);
 
-login sampleServlet = new login();
+LoginServlet sampleServlet = new LoginServlet();
 sampleServlet.doPost(stubHttpServletRequest, stubHttpServletResponse);
 String result = sw.getBuffer().toString().trim();
 System.out.println(stubHttpSession.getAttribute("uname"));
 
 System.out.println(result);
-TestCase.assertEquals(result,"Narsimha");
+TestCase.assertEquals(result,"narsimha");
 
 }
 }

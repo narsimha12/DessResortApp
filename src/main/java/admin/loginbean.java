@@ -2,7 +2,7 @@ package admin;
 
 import java.sql.*;
 
-public class loginbean {
+public class Loginbean {
 	
 	String uid;
 	Connection con=null;

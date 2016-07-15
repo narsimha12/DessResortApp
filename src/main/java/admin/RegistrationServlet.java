@@ -37,7 +37,7 @@ public class RegistrationServlet extends HttpServlet {
 			loc=request.getParameter("location");
 			
 			HttpSession session=request.getSession(true);
-			regFormbean rb=new regFormbean();
+			RegFormbean rb=new RegFormbean();
 			int st=rb.storeform(fn, pw, gen, pn, loc);
 			if(st>0){
 				session.setAttribute("uname",fn);

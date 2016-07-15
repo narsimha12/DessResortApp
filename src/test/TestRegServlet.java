@@ -15,8 +15,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import admin.login;
-import admin.regForm;
+import admin.LoginServlet;
+import admin.RegistrationServlet;
 
 
 public class TestRegServlet extends Mockito {
@@ -39,7 +39,7 @@ PrintWriter pw =new PrintWriter(sw);
 
 when(stubHttpServletResponse.getWriter()).thenReturn(pw);
 
-regForm sampleServlet = new regForm();
+RegistrationServlet sampleServlet = new RegistrationServlet();
 sampleServlet.doPost(stubHttpServletRequest, stubHttpServletResponse);
 String result = sw.getBuffer().toString().trim();
 
