@@ -9,6 +9,7 @@ public class Loginbean {
 	Statement stmt=null;
 	ResultSet rs=null;
 	String query;
+	private static final Logger logger = Logger.getLogger(Loginbean.class.getName());
 	public String checkStatus(String uid,String pwd){
 		con=new Dbconnection().getConnection();
 		query="select uid from login where uid='"+uid+"' and pwd='"+pwd+"'";
@@ -23,7 +24,7 @@ public class Loginbean {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.info(e);
 		}
 		finally{
 			try {
@@ -31,7 +32,7 @@ public class Loginbean {
 				con.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.info(e);
 			}
 		}
 		return uid;

@@ -1,12 +1,9 @@
 package admin;
 
 import java.io.IOException;
-
-import java.sql.SQLException;
-
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,42 +16,41 @@ public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		response.setContentType("text/html");
 		String fn = null;
-		String pw = null;
+		String pwd = null;
 		String gen = null;
 		String pn = null;
 		String loc = null;
+		PrintWriter pw = response.getWriter();
+		fn=request.getParameter("name");
+		pwd=generatePWDcode();	
+		gen=request.getParameter("gender");
+		pn=request.getParameter("mobile");
+		loc=request.getParameter("location");
 		
-		try {
-			fn=request.getParameter("name");
-			pw=generatePWDcode();	
-			gen=request.getParameter("gender");
-			pn=request.getParameter("mobile");
-			loc=request.getParameter("location");
-			
-			HttpSession session=request.getSession(true);
-			RegFormbean rb=new RegFormbean();
-			int st=rb.storeform(fn, pw, gen, pn, loc);
-			if(st>0){
+		HttpSession session=request.getSession(true);
+		RegFormbean rb=new RegFormbean();
+		int status=rb.storeform(fn, pwd, gen, pn, loc);
+		System.out.println("status:"+status);
+		if(status>0){
+			if(request.getAttribute("request")==null){
 				session.setAttribute("uname",fn);
-				session.setAttribute("password",pw);
+				session.setAttribute("password",pwd);
 				response.sendRedirect("Welcome.jsp");
 			}
-			else{
-				System.out.println("Registration fail...");
+		}
+		else{
+			if(request.getAttribute("request")==null){
 				response.sendRedirect("RegForm.html");
 			}
 		}
-		catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-
+		if(request.getAttribute("request")!=null){
+			pw.println(status);
+		}
 	
 	}
 
@@ -68,7 +64,7 @@ public class RegistrationServlet extends HttpServlet {
         }
         gcode=gencode.toString();
         System.out.println("genecode: "+gcode);
-    return gcode;
+        return gcode;
 		
 	}
 	

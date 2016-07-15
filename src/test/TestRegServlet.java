@@ -15,8 +15,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import admin.LoginServlet;
 import admin.RegistrationServlet;
+import admin.LoginServlet;
 
 
 public class TestRegServlet extends Mockito {
@@ -33,7 +33,7 @@ when(stubHttpServletRequest.getParameter("name")).thenReturn("TestUser");
 when(stubHttpServletRequest.getParameter("gender")).thenReturn("male");
 when(stubHttpServletRequest.getParameter("mobile")).thenReturn("9546464646");
 when(stubHttpServletRequest.getParameter("location")).thenReturn("hyderabad");
-
+when(stubHttpServletRequest.getAttribute("request")).thenReturn("test");
 StringWriter sw = new StringWriter();
 PrintWriter pw =new PrintWriter(sw);
 
@@ -41,10 +41,10 @@ when(stubHttpServletResponse.getWriter()).thenReturn(pw);
 
 RegistrationServlet sampleServlet = new RegistrationServlet();
 sampleServlet.doPost(stubHttpServletRequest, stubHttpServletResponse);
-String result = sw.getBuffer().toString().trim();
+int result = Integer.parseInt(sw.getBuffer().toString().trim());
 
-System.out.println(result);
-TestCase.assertEquals(result,"TestUser");
+//System.out.println(result);
+TestCase.assertEquals(result,1);
 
 }
 }

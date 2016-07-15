@@ -33,7 +33,7 @@ when(stubHttpServletRequest.getParameter("pwd")).thenReturn("GTV9X");
 
 when(stubHttpServletRequest.getSession()).thenReturn(stubHttpSession);
 when(stubHttpSession.getAttribute("uname")).thenReturn("narsimha");
-
+when(stubHttpServletRequest.getAttribute("request")).thenReturn("test");
 StringWriter sw = new StringWriter();
 PrintWriter pw =new PrintWriter(sw);
 
@@ -42,9 +42,10 @@ when(stubHttpServletResponse.getWriter()).thenReturn(pw);
 LoginServlet sampleServlet = new LoginServlet();
 sampleServlet.doPost(stubHttpServletRequest, stubHttpServletResponse);
 String result = sw.getBuffer().toString().trim();
-System.out.println(stubHttpSession.getAttribute("uname"));
+//System.out.println("from response: "+result);
+//System.out.println("in test: "+stubHttpSession.getAttribute("uname"));
 
-System.out.println(result);
+//System.out.println(result);
 TestCase.assertEquals(result,"narsimha");
 
 }

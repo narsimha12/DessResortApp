@@ -9,10 +9,12 @@ public class RegFormbean {
 	Connection con=new Dbconnection().getConnection();
 	PreparedStatement stmt=null;
 	int status;
-	public int storeform(String fn, String pw, String gen, String pn, String loc2) throws SQLException {
+	private static final Logger logger = Logger.getLogger(RegFormbean.class.getName());
+	public int storeform(String fn, String pw, String gen, String pn, String loc2) {
 		// TODO Auto-generated method stub
-         stmt=con.prepareStatement("INSERT INTO userreg VALUES(?,?,?,?,?,?,?,?,?)"); 
+         
         try {
+        	stmt=con.prepareStatement("INSERT INTO userreg VALUES(?,?,?,?,?,?,?,?,?)"); 
 				stmt.setString(1, fn);
 				stmt.setString(2, "null");
 				stmt.setString(3, pw);
@@ -32,11 +34,16 @@ public class RegFormbean {
 		        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.info(e);
 		}
         finally{
-        	stmt.close();
-        	con.close();
+        	try {
+				stmt.close();
+				con.close();
+			} catch (SQLException e) {
+				logger.info(e);
+			}
+        	
         }
         return status;
        }
