@@ -54,12 +54,7 @@
         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.4.201502262128</version>
-            <configuration>
-                <excludes>
-                  <exclude>**/bean/*.*</exclude>
-                </excludes>
-            </configuration>
+            <version>0.7.6.201602180812</version>
         </plugin>
         <plugin>
               <groupId>org.apache.maven.plugins</groupId>
