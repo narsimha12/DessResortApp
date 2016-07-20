@@ -7,6 +7,13 @@
   <version>1.0-SNAPSHOT</version>
   <name>DessResort</name>
   <url>http://maven.apache.org</url>
+  <properties>
+      <!-- Sonar -->
+      <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+      <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+      <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+      <sonar.language>java</sonar.language>
+  </properties>
   <dependencies>
    <dependency>
     <groupId>org.mockito</groupId>
@@ -55,24 +62,19 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.7.5.201505241946</version>
-          <executions>
-                 <execution>
-                    <id>default-prepare-agent</id>
-                    <goals><goal>prepare-agent</goal></goals>
-                </execution>
-                <execution>
-                    <id>default-report</id>
-                    <phase>prepare-package</phase>
-                   <goals><goal>report</goal></goals>
-               </execution>
-           </executions>
           <configuration>
-            <includes>
-              <include>org.sonar.*</include>
-              <include>org.sonarqube.*</include>
-            </includes>
-          </configuration>
-        </plugin>
+        	<destFile>${sonar.jacoco.reportPath}</destFile>
+        	<append>true</append>
+    	  </configuration>
+    	  <executions>
+        	<execution>
+            	  <id>agent</id>
+            	  <goals>
+                     <goal>prepare-agent</goal>
+           	  </goals>
+                </execution>
+    	  </executions>
+	</plugin>
         <plugin>
               <groupId>org.apache.maven.plugins</groupId>
 	      <artifactId>maven-compiler-plugin</artifactId>
