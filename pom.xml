@@ -85,6 +85,7 @@
             <!-- Minimal supported version is 2.4 -->
             <version>2.13</version>
             <configuration>
+              <argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
               <properties>
                 <property>
                   <name>listener</name>
