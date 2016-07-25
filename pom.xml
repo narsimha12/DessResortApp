@@ -1,104 +1,155 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>DessResort</groupId>
-  <artifactId>DessResort</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>DessResort</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-   <dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-all</artifactId>
-    <version>1.10.19</version>
-   </dependency>
-   <dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.8</version>
-   </dependency>
-     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-    </dependency>
-    <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>3.0.1</version>
-        <scope>provided</scope>
-    </dependency>
-   <dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-   </dependency> 
-   
- </dependencies>
-  <build>
-   <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <configuration>
-               <failOnMissingWebXml>false</failOnMissingWebXml>
-               <archive>
-                   <manifestEntries>
-                       <Specification-Title>${project.name}</Specification-Title>
-                       <Specification-Version>${project.version}</Specification-Version>
-                       <Implementation-Version>${build.number}</Implementation-Version>
-                   </manifestEntries>
-               </archive>
-            </configuration>
-        </plugin>
-        
-        <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-	      <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                <source>1.7</source>
-                <target>1.7</target>
-              </configuration>
-        </plugin>
-    </plugins>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <includes>
-                <include>log4j.properties</include>
-            </includes>
-        </resource>
-    </resources>
-    <finalName>DessResort</finalName>
-  </build>
- <!-- BEGIN: Specific to mapping unit tests and covered code -->
-  <profiles>
-    <profile>
-      <id>coverage-per-test</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <!-- Minimal supported version is 2.4 -->
-           
-            <configuration>
-              <argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>DessResort</groupId>
+	<artifactId>DessResort</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-      <dependencies>
-        <dependency>
-          <groupId>org.sonarsource.java</groupId>
-          <artifactId>sonar-jacoco-listeners</artifactId>
-          <version>3.8</version>
-          <scope>test</scope>
-        </dependency>
-      </dependencies>
-    </profile>
-  </profiles>
-  <!-- END: Specific to mapping unit tests and covered code -->
+	<properties>
+		<build.manifest.section>Build Details</build.manifest.section>
+		<build.unknown>UNKNOWN</build.unknown>
+		<build.number>${build.unknown}</build.number>
+		<build.revision>${build.unknown}</build.revision>	
+		<maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
+
+		<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Web -->
+		<servlet.version>3.0.1</servlet.version>
+
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+
+	</properties>
+	<!--<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://10.25.1.25:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://10.25.1.25:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+    -->
+	
+	<dependencies>
+		
+		<!-- Apache poi -->
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+	<version>3.9</version>
+	</dependency>
+
+		<dependency>
+	        <groupId>javax.servlet</groupId>
+	        <artifactId>javax.servlet-api</artifactId>
+	        <version>3.0.1</version>
+	        <scope>provided</scope>
+	    </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		
+
+
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.8</version>
+	   </dependency>
+
+		
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+			
+		
+	</dependencies>
+	
+	 <build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.5.201505241946</version>
+				    <configuration>
+						<excludes>							
+							<exclude>src/main/java/admin/*.java</exclude>
+						</excludes>
+					</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-war-plugin</artifactId>
+				  <configuration>
+				   <manifest>
+					<addDefaultImplementationEntries>false</addDefaultImplementationEntries>
+				   </manifest>
+				   <archive>
+					<manifestEntries>
+					 <Major-Version>${project.version}</Major-Version>
+					 <Build-Version>${build.number}</Build-Version>
+					 <SCM-Revision>${build.revision}</SCM-Revision>
+					 <Build-Time>${maven.build.timestamp}</Build-Time>
+					 <Build-Host>${agent.name}</Build-Host>
+					 <Build-User>${user.name}</Build-User>
+					</manifestEntries>
+				   </archive>
+				  </configuration>
+				 </plugin>
+	
+		</plugins>
+		<finalName>${project.artifactId}-v${project.version}_${build.revision}_${build.number}</finalName>
+		
+	</build> 
+	
 </project>
