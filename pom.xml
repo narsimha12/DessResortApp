@@ -90,11 +90,6 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.5.201505241946</version>
-				    <configuration>
-						<excludes>							
-							<exclude>src/main/java/admin/*.java</exclude>
-						</excludes>
-					</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -134,6 +129,11 @@
                 <target>1.7</target>
               </configuration>
         	</plugin>
+        	<plugin>
+                 <groupId>org.codehaus.mojo</groupId>
+                 <artifactId>sonar-maven-plugin</artifactId>
+                 <version>2.2</version>
+            </plugin>
 	
 		</plugins>
 		<finalName>${project.artifactId}</finalName>
