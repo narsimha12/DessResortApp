@@ -138,7 +138,7 @@
           		<artifactId>sonar-maven-plugin</artifactId>
           		<version>2.7.1</version>
         	</plugin>
-	
+			
 		</plugins>
 		<finalName>${project.artifactId}</finalName>
 		
