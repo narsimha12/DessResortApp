@@ -113,7 +113,14 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+			<plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
 			<plugin>
 				  <groupId>org.apache.maven.plugins</groupId>
 				  <artifactId>maven-war-plugin</artifactId>
