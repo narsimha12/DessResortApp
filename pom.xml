@@ -32,13 +32,8 @@
 
 	</properties>
 	<distributionManagement>
-	<!--	<repository>
-			<id>releases</id>
-			<url>http://10.138.90.156:8081/nexus/content/repositories/releases</url>
-		</repository>
--->
 		<snapshotRepository>
-			<id>snapshots</id>
+			<id>nexus-snapshots</id>
 			<url>http://10.138.90.156:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
@@ -94,7 +89,19 @@
 	
 	 <build>
 		<plugins>
-			<plugin>
+		       <plugin>
+        		<groupId>org.sonatype.plugins</groupId>
+        		<artifactId>nexus-staging-maven-plugin</artifactId>
+        		<version>1.6.3</version>
+        		<extensions>true</extensions>
+        		<configuration>
+              			<serverId>nexus-releases</serverId>
+          			<nexusUrl>http://10.138.90.156:8081/nexus/</nexusUrl>
+          			<!-- update this to the correct id! 
+          			<stagingProfileId>1296f79efe04a4d0</stagingProfileId> -->
+       			 </configuration>
+      			</plugin>
+                	<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.4.201502262128</version>
