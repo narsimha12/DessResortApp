@@ -29,15 +29,39 @@
 
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
-
+              <nexus.url>http://10.138.90.156:8081/nexus/content</nexus.url>
 	</properties>
-	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://10.138.90.156:8081/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<dependencies>
+      <repositories>
+  	<repository>
+    	<id>nexus</id>
+    	<url>${nexus.url}/groups/public</url>
+    	<snapshots>
+      		<enabled>true</enabled>
+      		<updatePolicy>always</updatePolicy>
+    	</snapshots>
+  	</repository>
+      </repositories>
+      <pluginRepositories>
+  	<pluginRepository>
+    	<id>nexus</id>
+    	<url>${nexus.url}/groups/public</url>
+  	</pluginRepository>
+     </pluginRepositories>
+  <distributionManagement>
+   <repository>
+    <uniqueVersion>false</uniqueVersion>
+    <id>nexus</id>
+    <name>Releases</name>
+    <url>${nexus.url}/repositories/releases</url>
+   </repository>
+  	<snapshotRepository>
+    	  <uniqueVersion>false</uniqueVersion>
+    	  <id>nexus</id>
+    	  <name>Snapshots</name>
+   	  <url>${nexus.url}/repositories/snapshots</url>
+  	</snapshotRepository>
+  </distributionManagement>	
+      <dependencies>
 		
 		<!-- Apache poi -->
 	<dependency>
@@ -89,7 +113,7 @@
 	
 	 <build>
 		<plugins>
-		       <plugin>
+		       <!-- <plugin>
         		<groupId>org.sonatype.plugins</groupId>
         		<artifactId>nexus-staging-maven-plugin</artifactId>
         		<version>1.6.7</version>
@@ -99,6 +123,7 @@
           			<nexusUrl>http://10.138.90.156:8081/nexus/</nexusUrl>
        			 </configuration>
       			</plugin>
+                      -->
                 	<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
